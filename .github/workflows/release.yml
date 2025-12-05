@@ -30,11 +30,23 @@ jobs:
         run: trunk build --release
       - name: Build Tauri app
         run: cargo tauri build
-      - name: Upload bundles
+      - name: Upload bundles (macOS)
+        if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: clock-app-${{ matrix.os }}
-          path: src-tauri/target/release/bundle
+          name: clock-app-macos-latest
+          path: |
+            target/release/clock-app
+            target/release/bundle/**
+            src-tauri/target/release/bundle/**
+      - name: Upload bundles (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: clock-app-windows-latest
+          path: |
+            target/release/bundle/**
+            src-tauri/target/release/bundle/**
 
   release:
     needs: build
@@ -50,6 +62,8 @@ jobs:
         with:
           generate_release_notes: true
           files: |
+            artifacts/clock-app-macos-latest/clock-app
+            artifacts/clock-app-macos-latest/**/*.app
             artifacts/clock-app-macos-latest/**/*.dmg
             artifacts/clock-app-macos-latest/**/*.zip
             artifacts/clock-app-macos-latest/**/*.tar.gz
