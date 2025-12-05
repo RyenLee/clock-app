@@ -58,7 +58,7 @@ cargo tauri build
 
 - GitHub Actions 工作流位于 `.github/workflows/release.yml`
 - 触发条件：推送匹配 `v*` 标签或手动触发
-- 跨平台构建：`ubuntu-latest`、`macos-latest`、`windows-latest`
+- 构建平台：`macos-latest`、`windows-latest`
 - 产物通过 Artifact 输出到 `src-tauri/target/release/bundle/`
 
 ## 权限与平台注意
