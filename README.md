@@ -23,6 +23,20 @@
 - 产物位置：`src-tauri/target/release/bundle/`
 - Windows 产物包含 `msi` 与 `nsis` 安装包
 
+### 一键打包
+
+- 首次构建（自动安装必要依赖后打包）：
+
+```
+rustup target add wasm32-unknown-unknown; cargo install trunk; cargo tauri build
+```
+
+- 已安装依赖的情况下：
+
+```
+cargo tauri build
+```
+
 ## 使用
 
 - 打开应用后在标题下方查看当前时间（YYYY-MM-DD HH:mm:ss），每秒刷新
