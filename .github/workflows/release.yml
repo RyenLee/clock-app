@@ -24,6 +24,8 @@ jobs:
           node-version: 18
       - name: Install trunk
         run: cargo install trunk
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --locked
       - name: Build frontend
         run: trunk build --release
       - name: Build Tauri app
