@@ -60,6 +60,7 @@ cargo tauri build
 - 触发条件：推送匹配 `v*` 标签或手动触发
 - 构建平台：`macos-latest`、`windows-latest`
 - 产物通过 Artifact 输出到 `src-tauri/target/release/bundle/`
+- 推送 `v*` 标签后自动创建 GitHub Release 并上传构建产物
 
 ## 权限与平台注意
 
